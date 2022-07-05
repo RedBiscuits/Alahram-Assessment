@@ -1,4 +1,4 @@
-package com.datastructures.pairingtask.UI
+package com.datastructures.pairingtask.ui
 
 import android.Manifest
 import android.bluetooth.BluetoothAdapter
@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View

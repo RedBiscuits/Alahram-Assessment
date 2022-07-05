@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Joo/AndroidStudioProjects/PairingTask/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Joo/AndroidStudioProjects/PairingTask/app/src/main/res/layout/activity_nfcactivity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Joo/AndroidStudioProjects/PairingTask/app/src/main/res/layout/fragment_b_l_e_devices.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Joo/AndroidStudioProjects/PairingTask/app/src/main/res/layout/fragment_login.xml" value="0.264" />
+        <entry key="..\:/Users/Joo/AndroidStudioProjects/PairingTask/app/src/main/res/layout/fragment_nfc.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Joo/AndroidStudioProjects/PairingTask/app/src/main/res/layout/fragment_scan.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Joo/AndroidStudioProjects/PairingTask/app/src/main/res/xml/nfc_tech_filter.xml" value="0.253125" />
       </map>
     </option>
   </component>

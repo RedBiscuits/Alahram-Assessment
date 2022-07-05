@@ -1,16 +1,8 @@
-package com.datastructures.pairingtask.UI
+package com.datastructures.pairingtask.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.annotation.RestrictTo
 import com.datastructures.pairingtask.R
-import com.datastructures.pairingtask.database.UsersDatabase
-import com.datastructures.pairingtask.pojo.User
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
