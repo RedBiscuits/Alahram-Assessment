@@ -1,4 +1,4 @@
-package com.datastructures.pairingtask.UI
+package com.datastructures.pairingtask.ui
 
 import android.app.ProgressDialog
 import android.os.Bundle

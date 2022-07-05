@@ -1,4 +1,4 @@
-package com.datastructures.pairingtask.UI
+package com.datastructures.pairingtask.ui
 
 import android.app.AlertDialog
 import android.content.Context
@@ -25,7 +25,16 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
         bleImage.setOnClickListener{
             statusCheck()
         }
+        nfcImage.setOnClickListener{
+            navigateToNFC()
+        }
 
+
+    }
+
+    private fun navigateToNFC() {
+        val i = Intent(activity, NFCActivity::class.java)
+        startActivity(i)
     }
 
     private fun navigateToBLE() {
@@ -33,6 +42,7 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.flFragments, fragment)
+        fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
 

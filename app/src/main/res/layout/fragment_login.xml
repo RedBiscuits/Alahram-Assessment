@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.LoginFragment">
+    tools:context=".ui.LoginFragment">
 
     <EditText
         android:id="@+id/username"
@@ -27,7 +27,7 @@
         android:hint="@string/password_str"
         android:inputType="textPassword"
         android:importantForAutofill="no"
-        
+
         />
 
     <Button

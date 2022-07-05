@@ -18,4 +18,5 @@
     <string name="chose_to_continue_str">Chose technology to continue</string>
     <string name="ble_image">ble_image</string>
     <string name="nfc_image">nfc_image</string>
+    <string name="no_nfc_detected_str">No NFC detected</string>
 </resources>
