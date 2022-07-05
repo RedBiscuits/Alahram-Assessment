@@ -1,5 +1,6 @@
 package com.datastructures.pairingtask.interfaces
 
+import android.database.Observable
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -8,8 +9,8 @@ import com.datastructures.pairingtask.pojo.User
 @Dao
 interface UsersDAO {
     @Insert
-    fun insertUser(user: User?)
+    suspend fun insertUser(user: User?)
 
-    @get:Query("SELECT * FROM USERS")
-    val users: List<User?>?
+    @Query("select password from users where username = :username")
+    suspend fun getPasswordByUsername(username:String) : String
 }
