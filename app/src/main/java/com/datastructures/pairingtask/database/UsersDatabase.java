@@ -1,6 +1,8 @@
 package com.datastructures.pairingtask.database;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 
 import androidx.room.Database;
 import androidx.room.Room;
@@ -22,5 +24,6 @@ public abstract class UsersDatabase extends RoomDatabase {
                     .build();
         }
         return instance;
+
     }
 }

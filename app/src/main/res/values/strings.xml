@@ -14,4 +14,8 @@
     <string name="username_str">Username</string>
     <string name="password_str">Password</string>
     <string name="login_str">Login</string>
+    <string name="cancel_str">cancel</string>
+    <string name="chose_to_continue_str">Chose technology to continue</string>
+    <string name="ble_image">ble_image</string>
+    <string name="nfc_image">nfc_image</string>
 </resources>
