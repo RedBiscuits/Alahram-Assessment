@@ -1,8 +1,10 @@
 package com.datastructures.pairingtask.ui
 
+import android.Manifest
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
@@ -10,6 +12,8 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -53,6 +57,7 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
     }
 
     private fun navigateToBLE() {
+        requireActivity().findViewById<TextView>(R.id.mainActivityTV).text = "Nearby Devices"
         val fragment: Fragment = BLEDevicesFragment()
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
@@ -61,11 +66,26 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
     }
 
     private fun statusCheck() {
+        checkBluetooth()
         val manager = requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager?
         if (!manager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             buildAlertMessageNoGps()
         }else {
             navigateToBLE()
+        }
+    }
+
+    private fun checkBluetooth(){
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.BLUETOOTH_CONNECT
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.BLUETOOTH_CONNECT),
+                2
+            )
         }
     }
 
