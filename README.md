@@ -1,7 +1,7 @@
-# Carbon
+# Alahram Secuirity Group technical assessment
 
 <p align="center">
-<img src="carbon_gif_logo.gif" alt="App Screenshot" width="300"/>
+<img src="scannApp_video.gif" alt="App Screenshot" width="300"/>
  </em>
  <p align="center"><em>Technical assessment for Alahram Security Group mobile summer internship. </em></p>
  </p>
