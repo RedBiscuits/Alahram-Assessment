@@ -19,6 +19,7 @@ import java.nio.charset.Charset
 import kotlin.experimental.and
 
 class NFCActivity() : AppCompatActivity(), Parcelable {
+
     private lateinit var binding: ActivityNfcactivityBinding
     private lateinit var tvNFCContent: TextView
     private val nfcAdapter: NfcAdapter? by lazy {
@@ -56,6 +57,10 @@ class NFCActivity() : AppCompatActivity(), Parcelable {
         )
         val tagDetected = IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED)
         tagDetected.addCategory(Intent.CATEGORY_DEFAULT)
+
+        binding.backButton.setOnClickListener{
+            onBackPressed()
+        }
     }
 
     override fun onNewIntent(intent: Intent) {
