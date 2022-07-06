@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -21,7 +22,9 @@ import com.datastructures.pairingtask.R
 
 
 class BLEDevicesFragment : Fragment(R.layout.fragment_b_l_e_devices) {
-    private lateinit var bluetoothAdapter: BluetoothAdapter
+    val bluetoothAdapter: BluetoothAdapter? by lazy {
+        BluetoothAdapter.getDefaultAdapter()
+    }
     private lateinit var listView:ListView
     private lateinit var arrayList:ArrayList<String>
     lateinit var arrayAdapter:ArrayAdapter<String>
@@ -32,7 +35,15 @@ class BLEDevicesFragment : Fragment(R.layout.fragment_b_l_e_devices) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arrayList = ArrayList()
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        if(bluetoothAdapter == null){
+            Toast.makeText(requireContext(), "Your device doesn't support Bluetooth",Toast.LENGTH_LONG).show()
+            navigateToScanOptions()
+        }else{
+            scanDevices(view)
+        }
+    }
+
+    private fun scanDevices(view: View) {
         listView = view.findViewById(R.id.ble_devices_lv)
         button = view.findViewById(R.id.cancel_button)
         if (ActivityCompat.checkSelfPermission(
@@ -47,19 +58,20 @@ class BLEDevicesFragment : Fragment(R.layout.fragment_b_l_e_devices) {
             )
         }
         arrayAdapter = ArrayAdapter(
-            requireContext(), android.R.layout.simple_list_item_1 , arrayList)
+            requireContext(), android.R.layout.simple_list_item_1, arrayList
+        )
 
-        if(!bluetoothAdapter.isEnabled){
-            bluetoothAdapter.enable()
+        if (!(bluetoothAdapter?.isEnabled)!!) {
+            bluetoothAdapter?.enable()
         }
-        bluetoothAdapter.startDiscovery()
+        bluetoothAdapter?.startDiscovery()
 
         val intentFilter = IntentFilter(BluetoothDevice.ACTION_FOUND)
-        requireActivity().registerReceiver(broadcastReceiver,intentFilter)
+        requireActivity().registerReceiver(broadcastReceiver, intentFilter)
 
 
         listView.adapter = arrayAdapter
-        button.setOnClickListener{
+        button.setOnClickListener {
             navigateToScanOptions()
         }
     }
@@ -96,7 +108,6 @@ class BLEDevicesFragment : Fragment(R.layout.fragment_b_l_e_devices) {
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.flFragments, fragment)
-        fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
 }

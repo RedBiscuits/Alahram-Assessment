@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.datastructures.pairingtask.R
@@ -28,8 +29,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         //Initializations
         userDB = UsersDatabase.getInstance(context)
-        username = view.findViewById(R.id.username)
-        password = view.findViewById(R.id.password)
+        username = view.findViewById(R.id.usernameET)
+        password = view.findViewById(R.id.passwordET)
         login = view.findViewById(R.id.login_button)
 
         //Login handling
@@ -77,6 +78,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     //Replace login fragment with scan
     private fun navigateToScan() {
+        requireActivity().findViewById<TextView>(R.id.mainActivityTV).text = "Choose technology to scan"
         val fragment: Fragment = ScanFragment()
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()

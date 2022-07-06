@@ -1,12 +1,11 @@
 package com.datastructures.pairingtask.database;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+
 import com.datastructures.pairingtask.interfaces.UsersDAO;
 import com.datastructures.pairingtask.pojo.User;
 

@@ -1,6 +1,5 @@
 package com.datastructures.pairingtask.interfaces
 
-import android.database.Observable
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query

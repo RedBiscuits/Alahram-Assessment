@@ -21,7 +21,9 @@ import kotlin.experimental.and
 class NFCActivity() : AppCompatActivity(), Parcelable {
     private lateinit var binding: ActivityNfcactivityBinding
     private lateinit var tvNFCContent: TextView
-    private lateinit var nfcAdapter: NfcAdapter
+    private val nfcAdapter: NfcAdapter? by lazy {
+        NfcAdapter.getDefaultAdapter(this)
+    }
     private lateinit var pendingIntent: PendingIntent
     private var myTag: Tag? = null
 
@@ -38,7 +40,6 @@ class NFCActivity() : AppCompatActivity(), Parcelable {
         tvNFCContent = binding.nfcContents
         tvNFCContent.text = "Place the back of the phone over a NFC tag to read message from NFC tag"
 
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
         if (nfcAdapter == null) {
             // Stop here, we definitely need NFC
             Toast.makeText(this, "This device doesn't support NFC.", Toast.LENGTH_LONG).show()

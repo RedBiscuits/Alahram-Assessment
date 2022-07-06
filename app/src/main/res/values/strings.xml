@@ -19,4 +19,10 @@
     <string name="ble_image">ble_image</string>
     <string name="nfc_image">nfc_image</string>
     <string name="no_nfc_detected_str">No NFC detected</string>
+    <string name="register">REGISTER</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+    <string name="login">Login</string>
 </resources>
