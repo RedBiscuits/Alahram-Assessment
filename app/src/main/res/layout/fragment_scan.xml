@@ -7,28 +7,32 @@
     tools:context=".ui.ScanFragment">
 
 
-    <ImageView
-        android:id="@+id/ble_image"
-        android:layout_width="@dimen/_90sdp"
-        android:layout_height="@dimen/_90sdp"
-        android:layout_marginTop="@dimen/_110sdp"
-        android:src="@drawable/ble_image"
-        app:layout_constraintBottom_toTopOf="@+id/nfc_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/ble_image" />
-
-    <ImageView
-        android:id="@+id/nfc_image"
-        android:layout_width="@dimen/_90sdp"
-        android:layout_height="@dimen/_90sdp"
-        android:src="@drawable/nfc_image"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/bluetooth_animation"
+        android:layout_width="@dimen/_110sdp"
+        android:layout_height="@dimen/_110sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="@dimen/_100sdp"
-        android:contentDescription="@string/nfc_image" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/bluetooth_animation" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/NFC_animation"
+        android:layout_width="@dimen/_190sdp"
+        android:layout_height="@dimen/_190sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bluetooth_animation"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/nfc_animation" />
+
+
 
 
 

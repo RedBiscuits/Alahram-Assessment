@@ -16,6 +16,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.datastructures.pairingtask.R
+import kotlin.reflect.KProperty1
 
 
 class BLEDevicesFragment : Fragment(R.layout.fragment_b_l_e_devices) {
@@ -23,6 +24,7 @@ class BLEDevicesFragment : Fragment(R.layout.fragment_b_l_e_devices) {
     private val bluetoothAdapter: BluetoothAdapter? by lazy {
         BluetoothAdapter.getDefaultAdapter()
     }
+
     private lateinit var listView:ListView
     private val arrayList:ArrayList<String> = ArrayList()
     val arrayAdapter:ArrayAdapter<String> by lazy {
@@ -36,12 +38,8 @@ class BLEDevicesFragment : Fragment(R.layout.fragment_b_l_e_devices) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(bluetoothAdapter == null){
-            Toast.makeText(requireContext(), "Your device doesn't support Bluetooth",Toast.LENGTH_LONG).show()
-            navigateToScanOptions()
-        }else{
             scanDevices(view)
-        }
+
     }
 
     private fun scanDevices(view: View) {

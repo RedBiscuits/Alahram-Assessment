@@ -2,6 +2,7 @@ package com.datastructures.pairingtask.ui
 
 import android.Manifest
 import android.app.AlertDialog
+import android.bluetooth.BluetoothAdapter
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,30 +12,40 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.airbnb.lottie.LottieAnimationView
 import com.datastructures.pairingtask.R
 
 
 class ScanFragment : Fragment(R.layout.fragment_scan) {
-    private lateinit var bleImage:ImageView
-    private lateinit var nfcImage:ImageView
+
+    private val bluetoothAdapter: BluetoothAdapter? by lazy {
+        BluetoothAdapter.getDefaultAdapter()
+    }
+
+    private val bluetoothAnimation:LottieAnimationView by lazy {
+        requireView().findViewById(R.id.bluetooth_animation)
+    }
+    private val nfcAnimation:LottieAnimationView by lazy {
+        requireView().findViewById(R.id.NFC_animation)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         hideKeyboard()
 
-        bleImage = view.findViewById(R.id.ble_image)
-        nfcImage = view.findViewById(R.id.nfc_image)
 
-        bleImage.setOnClickListener{
-            statusCheck()
-        }
-        nfcImage.setOnClickListener{
+        bluetoothAnimation.setOnClickListener{
+            if(bluetoothAdapter == null){
+                Toast.makeText(requireContext(), "Your device doesn't support Bluetooth", Toast.LENGTH_LONG).show()
+            }else{
+                permissionsCheck()
+            }        }
+        nfcAnimation.setOnClickListener{
             navigateToNFC()
         }
 
@@ -65,7 +76,7 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
         fragmentTransaction.commit()
     }
 
-    private fun statusCheck() {
+    private fun permissionsCheck() {
         checkBluetooth()
         val manager = requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager?
         if (!manager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)) {

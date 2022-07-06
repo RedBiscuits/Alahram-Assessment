@@ -18,10 +18,14 @@
         android:layout_gravity="center"
         android:padding="@dimen/loginViewsMargin">
 
-        <TextView
-            style="@style/headerTextPrimary"
-            android:text="@string/login"
-            android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/login_animation"
+            app:lottie_autoPlay="true"
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputEmail"
